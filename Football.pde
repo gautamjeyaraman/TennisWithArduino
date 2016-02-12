@@ -15,7 +15,8 @@ void setup() {
   // printed by the line above).
   arduino = new Arduino(this, Arduino.list()[3], 57600);
   
-  size(640, 512);
+  fullScreen();
+  //size(640, 512);
   noStroke();
   frameRate(30);
   ellipseMode(RADIUS);
@@ -52,6 +53,9 @@ void draw()
   int rect2Y = sensorValue2/2;
   int rect2H = 100;
   int rect2W = 30;
+  
+  
+  
   time++;
   if(time%60 == 0){
     xspeed = xspeed+1;
@@ -63,8 +67,8 @@ void draw()
   value = (int) map(value,800,1000,150,255);
   background(0,value,0);
   textSize(20);
-  text(player1,300,40);
-  text(player2,350,40);
+  text(player1,(width/2)-50,40);
+  text(player2,(width/2)+50,40);
   
   // Update the position of the shape
   xpos = xpos + ( xspeed * xdirection );
