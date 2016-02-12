@@ -84,5 +84,10 @@ void draw()
 
   // Draw the shape
   fill(204,0,0);
+  if(xpos == 0+rect1W || xpos == width-rect1W)
+  {
+    xpos = width/2;
+    ypos = height/2;
+  }
   ellipse(xpos, ypos, rad, rad);
 }
