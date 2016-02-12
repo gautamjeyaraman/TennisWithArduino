@@ -4,7 +4,9 @@ import cc.arduino.*;
 int potPin1 = 0;
 int potPin2 = 1;
 int time = 0; // to change ball speed every few seconds
+int waitDuration = 1000;
 Arduino arduino;
+
 
 void setup() {
   // Prints out the available serial ports.
@@ -95,16 +97,19 @@ void draw()
 
   // Draw the shape
   fill(204,0,0);
-  if(xpos < 0+rect1W+rect1X || xpos > rect2X-rect2W)
+   if(xpos < 0+rect1W+rect1X || xpos > rect2X)
   {
-    xpos = width/2;
-    ypos = height/2;
-    xspeed = 10;
-    xspeed = 10;
-    if(xpos > rect2X-rect2W)
+    if(xpos > rect2X)
       player1++;
     else
       player2++;
-  }
+    xpos = width/2;
+    ypos = height/2;
+    xspeed = 10;
+    yspeed = 10;
+    int initialTime = millis();
+    while(millis() - initialTime < waitDuration){
+      //do nothing
+    }
   ellipse(xpos, ypos, rad, rad);
 }
