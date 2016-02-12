@@ -34,7 +34,8 @@ float yspeed = 10;  // Speed of the shape
 int xdirection = 1;  // Left or Right
 int ydirection = 1;  // Top to Bottom
 
-
+int player1 = 0;
+int player2 = 0;
 
 void draw() 
 {
@@ -61,7 +62,9 @@ void draw()
   int value = arduino.analogRead(5);
   value = (int) map(value,800,1000,150,255);
   background(0,value,0);
-  
+  textSize(20);
+  text(player1,300,40);
+  text(player2,350,40);
   
   // Update the position of the shape
   xpos = xpos + ( xspeed * xdirection );
@@ -92,6 +95,12 @@ void draw()
   {
     xpos = width/2;
     ypos = height/2;
+    xspeed = 10;
+    xspeed = 10;
+    if(xpos > rect2X-rect2W)
+      player1++;
+    else
+      player2++;
   }
   ellipse(xpos, ypos, rad, rad);
 }
