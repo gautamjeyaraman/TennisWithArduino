@@ -1,7 +1,8 @@
 import processing.serial.*;
 import cc.arduino.*;
 
-int potPin = 0;
+int potPin1 = 0;
+int potPin2 = 1;
 
 Arduino arduino;
 
@@ -14,7 +15,7 @@ void setup() {
   // printed by the line above).
   arduino = new Arduino(this, Arduino.list()[3], 57600);
   
-    size(640, 512);
+  size(640, 512);
   noStroke();
   frameRate(30);
   ellipseMode(RADIUS);
@@ -38,8 +39,8 @@ int ydirection = 1;  // Top to Bottom
 void draw() 
 {
   
-  int sensorValue1 = arduino.analogRead(potPin);
-  int sensorValue2 = arduino.analogRead(potPin);
+  int sensorValue1 = arduino.analogRead(potPin1);
+  int sensorValue2 = arduino.analogRead(potPin2);
   
   int rect1X = 30;
   int rect1Y = sensorValue1/2;
