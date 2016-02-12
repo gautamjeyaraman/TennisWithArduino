@@ -47,12 +47,12 @@ void draw()
   int sensorValue2 = arduino.analogRead(potPin2);
   
   int rect1X = 0;
-  int rect1Y = sensorValue1/2;
+  int rect1Y = sensorValue1;
   int rect1H = 100;
   int rect1W = 30;
 
   int rect2X = width-30;
-  int rect2Y = sensorValue2/2;
+  int rect2Y = sensorValue2;
   int rect2H = 100;
   int rect2W = 30;
   
@@ -92,6 +92,7 @@ void draw()
     xdirection *= -1;
   }
 
+  fill(139,69,19);
   rect(rect1X, rect1Y, rect1W, rect1H);
   rect(rect2X, rect2Y, rect2W, rect2H);
 
@@ -111,5 +112,6 @@ void draw()
     while(millis() - initialTime < waitDuration){
       //do nothing
     }
+  }
   ellipse(xpos, ypos, rad, rad);
 }
