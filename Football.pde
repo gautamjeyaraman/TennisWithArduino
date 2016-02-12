@@ -46,7 +46,7 @@ void draw()
   int rect1Y = sensorValue1/2;
   int rect1H = 100;
   int rect1W = 30;
-  int rect2X = width-60;
+  int rect2X = width-2*rect1X;
   int rect2Y = sensorValue2/2;
   int rect2H = 100;
   int rect2W = 30;
@@ -84,7 +84,7 @@ void draw()
 
   // Draw the shape
   fill(204,0,0);
-  if(xpos == 0+rect1W || xpos == width-rect1W)
+  if(xpos < 0+rect1W+rect1X || xpos > rect2X+rect2W)
   {
     xpos = width/2;
     ypos = height/2;
