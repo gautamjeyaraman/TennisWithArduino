@@ -3,7 +3,7 @@ import cc.arduino.*;
 
 int potPin1 = 0;
 int potPin2 = 1;
-
+int time = 0; // to change ball speed every few seconds
 Arduino arduino;
 
 void setup() {
@@ -50,7 +50,11 @@ void draw()
   int rect2Y = sensorValue2/2;
   int rect2H = 100;
   int rect2W = 30;
-  
+  time++;
+  if(time%60 == 0){
+    xspeed = xspeed+1;
+    yspeed = yspeed+1;
+}
   
   
   int value = arduino.analogRead(5);
