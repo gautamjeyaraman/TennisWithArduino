@@ -38,12 +38,18 @@ int ydirection = 1;  // Top to Bottom
 void draw() 
 {
   
-  int sensorValue = arduino.analogRead(potPin);
+  int sensorValue1 = arduino.analogRead(potPin);
+  int sensorValue2 = arduino.analogRead(potPin);
   
-  int rectX = 30;
-  int rectY = sensorValue/2;
-  int rectH = 100;
-  int rectW = 30;
+  int rect1X = 30;
+  int rect1Y = sensorValue1/2;
+  int rect1H = 100;
+  int rect1W = 30;
+  int rect2X = width-60;
+  int rect2Y = sensorValue2/2;
+  int rect2H = 100;
+  int rect2W = 30;
+  
   
   
   int value = arduino.analogRead(5);
@@ -64,11 +70,12 @@ void draw()
     ydirection *= -1;
   }
 
-  if (xpos-rad < rectX+rectW && ypos-rad<rectY+rectH && ypos+rad > rectY){
+  if (xpos-rad < rect1X+rect1W && ypos-rad<rect1Y+rect1H && ypos+rad > rect1Y){
     xdirection *= -1;
   }
 
-  rect(rectX, rectY, rectW, rectH);
+  rect(rect1X, rect1Y, rect1W, rect1H);
+  rect(rect2X, rect2Y, rect2W, rect2H);
 
   // Draw the shape
   fill(204,0,0);
