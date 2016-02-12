@@ -88,7 +88,7 @@ void draw()
 
   // Draw the shape
   fill(204,0,0);
-  if(xpos < 0+rect1W+rect1X || xpos > rect2X+rect2W)
+  if(xpos < 0+rect1W+rect1X || xpos > rect2X-rect2W)
   {
     xpos = width/2;
     ypos = height/2;
