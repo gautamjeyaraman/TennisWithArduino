@@ -1,8 +1,9 @@
 import processing.serial.*;
 import cc.arduino.*;
 
-int potPin = 0;
-
+int potPin1 = 0;
+int potPin2 = 1;
+int time = 0; // to change ball speed every few seconds
 Arduino arduino;
 
 void setup() {
@@ -14,7 +15,7 @@ void setup() {
   // printed by the line above).
   arduino = new Arduino(this, Arduino.list()[3], 57600);
   
-    size(640, 512);
+  size(640, 512);
   noStroke();
   frameRate(30);
   ellipseMode(RADIUS);
@@ -38,18 +39,23 @@ int ydirection = 1;  // Top to Bottom
 void draw() 
 {
   
-  int sensorValue1 = arduino.analogRead(potPin);
-  int sensorValue2 = arduino.analogRead(potPin);
+  int sensorValue1 = arduino.analogRead(potPin1);
+  int sensorValue2 = arduino.analogRead(potPin2);
   
   int rect1X = 0;
   int rect1Y = sensorValue1/2;
   int rect1H = 100;
   int rect1W = 30;
+
   int rect2X = width-30;
   int rect2Y = sensorValue2/2;
   int rect2H = 100;
   int rect2W = 30;
-  
+  time++;
+  if(time%60 == 0){
+    xspeed = xspeed+1;
+    yspeed = yspeed+1;
+}
   
   
   int value = arduino.analogRead(5);
@@ -82,5 +88,10 @@ void draw()
 
   // Draw the shape
   fill(204,0,0);
+  if(xpos < 0+rect1W+rect1X || xpos > rect2X+rect2W)
+  {
+    xpos = width/2;
+    ypos = height/2;
+  }
   ellipse(xpos, ypos, rad, rad);
 }
