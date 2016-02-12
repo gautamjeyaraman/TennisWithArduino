@@ -46,7 +46,10 @@ void draw()
   int rectW = 30;
   
   
-  background(102);
+  int value = arduino.analogRead(5);
+  value = (int) map(value,800,1000,150,255);
+  background(0,value,0);
+  
   
   // Update the position of the shape
   xpos = xpos + ( xspeed * xdirection );
