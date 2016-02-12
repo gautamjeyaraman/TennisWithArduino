@@ -41,11 +41,11 @@ void draw()
   int sensorValue1 = arduino.analogRead(potPin);
   int sensorValue2 = arduino.analogRead(potPin);
   
-  int rect1X = 30;
+  int rect1X = 0;
   int rect1Y = sensorValue1/2;
   int rect1H = 100;
   int rect1W = 30;
-  int rect2X = width-60;
+  int rect2X = width-30;
   int rect2Y = sensorValue2/2;
   int rect2H = 100;
   int rect2W = 30;
@@ -71,6 +71,9 @@ void draw()
   }
 
   if (xpos-rad < rect1X+rect1W && ypos-rad<rect1Y+rect1H && ypos+rad > rect1Y){
+    xdirection *= -1;
+  }
+  if (xpos+rad > rect2X && ypos-rad<rect2Y+rect2H && ypos+rad > rect2Y){
     xdirection *= -1;
   }
 
